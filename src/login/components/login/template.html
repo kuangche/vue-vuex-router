@@ -1,0 +1,64 @@
+<div id="chief">
+    <div class="login-login">
+        <div id="particles-js" />
+        <div class="loginmain">
+            <div class="input-group">
+                <input
+                    type="text"
+                    class="login-user"
+                />
+                <input
+                    type="password"
+                    class="login-pwd"
+                />
+                <i class="fa fa-user-o fa-lg" />
+                <i class="fa fa-bell-o fa-lg pwdico" />
+            </div>
+            <div class="login-btn">
+                <div
+                    class="errors pull-right"
+                    :class="{invisible: errorMsg.length <= 0}"
+                ><i
+                    class="fa fa-exclamation-circle fa-lg"
+                />{{errorMsg}}
+                </div>
+                <div class="clearfix" />
+                <div class="clearfix">
+                    <button
+                        type="button"
+                        class="login-button login-button-PKI pull-left"
+                    onClick="this.login"
+                    >
+                    PKI登录
+                    </button>
+                    <button
+                        type="button"
+                        class="login-button pull-right"
+                    onClick="this.login"
+                    >
+                    登录
+                    </button>
+                </div>
+                <div class="rolerow">
+                    <div class="pull-left role"><span
+                        role="presentation"
+                        value="0"
+                        :class="{checked: userType === '0'}"
+                        onClick="this.checkedChange('0')"
+                        />用户
+                    </div>
+                    <div class="pull-left role"><span
+                        role="presentation"
+                        value="1"
+                        onClick="this.checkedChange('1')"
+                        :class="{checked: userType === '1'}"
+                        />管理员
+                    </div>
+                    <div class="pull-right">
+                        <a href="/qbbigdata.cer">下载证书</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

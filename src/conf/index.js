@@ -1,0 +1,20 @@
+/**
+ * 功能：所有配置
+ * 作者：安超
+ * 日期：2018/7/18
+ */
+import errors from './errors'
+import * as constant from './constant'
+import routes from './routes'
+import getters from './getters'
+import * as mutationTypes from './mutation-types'
+
+const config = {
+    errors,
+    constant,
+    routes,
+    getters,
+    mutationTypes
+}
+
+export default config
