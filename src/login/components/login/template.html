@@ -1,4 +1,4 @@
-<div id="chief">
+<div id="chief" :keyup.13="loginHandle">
     <div class="login-login">
         <div id="particles-js" />
         <div class="loginmain">
@@ -6,10 +6,14 @@
                 <input
                     type="text"
                     class="login-user"
+                    ref="username"
+                    v-model="username"
                 />
                 <input
                     type="password"
                     class="login-pwd"
+                    ref="pwd"
+                    v-model="pwd"
                 />
                 <i class="fa fa-user-o fa-lg" />
                 <i class="fa fa-bell-o fa-lg pwdico" />
@@ -43,15 +47,15 @@
                     <div class="pull-left role"><span
                         role="presentation"
                         value="0"
-                        :class="{checked: userType === '0'}"
-                        onClick="this.checkedChange('0')"
+                        :class="{checked: type === '0'}"
+                        @click="checkedChange('0')"
                         />用户
                     </div>
                     <div class="pull-left role"><span
                         role="presentation"
                         value="1"
-                        onClick="this.checkedChange('1')"
-                        :class="{checked: userType === '1'}"
+                        @click="checkedChange('1')"
+                        :class="{checked: type === '1'}"
                         />管理员
                     </div>
                     <div class="pull-right">

@@ -8,12 +8,14 @@ import modules from './modules'
 import * as constant from './constant'
 import routes from './routes'
 import getters from './getters'
+import url from './url'
 import * as mutationTypes from './mutation-types'
 
 const config = {
     errors,
     modules,
     constant,
+    url,
     routes,
     getters,
     mutationTypes

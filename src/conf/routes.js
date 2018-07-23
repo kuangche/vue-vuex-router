@@ -3,12 +3,13 @@
  * 作者：安超
  * 日期：2018/7/18
  */
+import url from './url'
 
 const routes = [
     {
-        path: '/',
+        path: url.root,
         name: 'login',
-        component: () => import('@/login/components/login/index.vue'),
+        component: () => import('@/login/components/login'),
     },
 ]
 
