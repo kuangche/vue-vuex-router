@@ -1,7 +1,7 @@
 <template src="./template.html"/>
 <style lang="scss" src="./style.scss"></style>
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 import config from 'conf'
 import particlesJS from 'plugins/particles'
 import * as actionTypes from '../../actions/actionTypes'
@@ -17,9 +17,6 @@ export default {
             errorMsg: ''
         }
     },
-    computed: mapState({
-
-    }),
     mounted(){
         this.$refs.username.focus()
         particlesJS('particles-js', constant.particles)
