@@ -4,6 +4,5 @@
  * 日期：2018/7/18
  */
 
-export const HASNOTCONFIGACTIONTYPE = 'HASNOTCONFIGACTIONTYPE'
 export const SET_USER_INFO_LOGIN = 'SET_USER_INFO_LOGIN'
 export const USER_TYPE = ['0', '1']

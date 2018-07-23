@@ -109,7 +109,7 @@ const createActions = function (actionMap) {
                         if (stateCode === 401) {
                             location.replace(location.origin)
                         } else {
-                            window.raptorApp.$message({
+                            window.projectApp.$message({
                                 message,
                                 type: 'error'
                             })
@@ -125,12 +125,12 @@ const createActions = function (actionMap) {
                     if(error.response){
                         commit(`${config.actionType}_FAIL`)
                         commit(`${config.actionType}_ALWAYS`)
-                        window.raptorApp.$message({
+                        window.projectApp.$message({
                             message: '服务器端错误😂！',
                             type: 'error'
                         })
                     } else {
-                        window.raptorApp.$message({
+                        window.projectApp.$message({
                             message: `${error.message}！${error.stack}!`,
                             type: 'error'
                         })
