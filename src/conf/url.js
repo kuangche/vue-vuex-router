@@ -5,15 +5,12 @@
  */
 
 const url = {
-    root: '/',
+    root: '',
     login: '/login',
     app: {
-        root: {
-            path: '/app'
-        },
-        todos: {
-            path: '/app/todos'
-        }
+        root: '/app',
+        todos: '/app/todos',
+        others: '/app/others'
     }
 }
 

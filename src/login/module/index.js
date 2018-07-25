@@ -2,15 +2,17 @@ import { createActions, handleMutations } from 'framework'
 import * as actionTypes from '../actions/actionTypes'
 
 const login = {
-    namespaced: false,
+    namespaced: true,
     state: {
-        username: 'aa',
+        username: 'abc',
         userType: actionTypes.USER_TYPE[0]
     },
     mutations: handleMutations({
         [actionTypes.SET_USER_INFO_LOGIN]: {
             success(state, payload){
-                state.username = payload
+                const { username, userType } = payload
+                state.username = username
+                state.userType = userType
             }
         }
     }),
@@ -25,7 +27,7 @@ const login = {
         getUserInfo: {
             url: '/api/getUserInfo',
             actionType: actionTypes.SET_USER_INFO_LOGIN
-        },
+        }
     })
 }
 

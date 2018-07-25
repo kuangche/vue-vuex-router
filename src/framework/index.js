@@ -68,17 +68,18 @@ const createActions = function (actionMap) {
             const config = { method: 'GET', actionType: actionTypeDefault, ...configOrFn }
             fnsMap[eventName] = ({commit}, payload = {}) => {
                 let loadingInstance = null
+                const handleRoot = {root: config.actionType === 'HASNOTCONFIGACTIONTYPE'}
 
                 if (config.hasLoading || config.hasLoading === undefined) {
                     loadingInstance = Loading.service({
                         lock: true,
-                        text: '加载中……',
+                        text: '玩命加载中……',
                         spinner: 'el-icon-loading',
                         background: 'rgba(0, 0, 0, 0.7)'
                     })
                 }
 
-                commit(`${config.actionType}_PRE`, payload)
+                commit(`${config.actionType}_PRE`, payload, handleRoot)
                 return handleWithParameter(
                     config.url,
                     {
@@ -88,25 +89,25 @@ const createActions = function (actionMap) {
                 ).then((res) => {
                     loadingInstance.close()
 
-                    const { stateCode, result, message } = res.data
-                    let data = {}
+                    const { statusCode, data, message } = res.data
+                    let dataRes = {}
                     // 是否需要接口传递的参数
                     if (config.needFormData) {
-                        data = {result: res}
+                        dataRes = {data: res}
                     } else {
-                        data = {result}
+                        dataRes = {data}
                     }
 
                     // always只有在成功时才返回数据，非200或异常都不返回数据
-                    if (stateCode === 200) {
-                        commit(`${config.actionType}_SUCCESS`, data.result)
-                        commit(`${config.actionType}_ALWAYS`, data.result)
+                    if (statusCode === 200) {
+                        commit(`${config.actionType}_SUCCESS`, dataRes.data, handleRoot)
+                        commit(`${config.actionType}_ALWAYS`, dataRes.data, handleRoot)
 
                         return res.data
                     }
 
                     if (config.handleError || config.handleError === undefined) {
-                        if (stateCode === 401) {
+                        if (statusCode === 401) {
                             location.replace(location.origin)
                         } else {
                             window.projectApp.$message({
@@ -116,15 +117,15 @@ const createActions = function (actionMap) {
                         }
                     }
 
-                    commit(`${config.actionType}_ERROR`, message)
-                    commit(`${config.actionType}_ALWAYS`)
+                    commit(`${config.actionType}_ERROR`, message, handleRoot)
+                    commit(`${config.actionType}_ALWAYS`, null, handleRoot)
 
                     return res.data
                 }).catch((error) => {
                     loadingInstance.close()
                     if(error.response){
-                        commit(`${config.actionType}_FAIL`)
-                        commit(`${config.actionType}_ALWAYS`)
+                        commit(`${config.actionType}_FAIL`, null, handleRoot)
+                        commit(`${config.actionType}_ALWAYS`, null, handleRoot)
                         window.projectApp.$message({
                             message: '服务器端错误😂！',
                             type: 'error'
@@ -141,7 +142,6 @@ const createActions = function (actionMap) {
             fnsMap[eventName] = configOrFn
         }
     })
-
     return fnsMap
 }
 

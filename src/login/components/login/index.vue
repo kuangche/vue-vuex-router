@@ -9,6 +9,7 @@ import * as actionTypes from '../../actions/actionTypes'
 const { constant, url } = config
 
 export default {
+    name: 'Login',
     data() {
         return {
             username: '',
@@ -26,7 +27,7 @@ export default {
         document.removeEventListener('keyup', this.enterEvent)
     },
     methods: {
-        ...mapActions(['login']),
+        ...mapActions('login', ['login']),
         enterEvent(e){
             if (e.keyCode === 13) {
                 this.loginHandle()

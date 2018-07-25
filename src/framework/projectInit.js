@@ -6,7 +6,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import config from 'conf'
-import App from '@/components/app'
+import Root from '@/components/root'
 import store from './store'
 
 const { routes } = config
@@ -21,9 +21,9 @@ const projectInit = function (oContainer) {
             routes,
         }),
         components: {
-            App
+            Root
         },
-        template: '<App/>',
+        template: '<Root/>',
         store
     })
 }
