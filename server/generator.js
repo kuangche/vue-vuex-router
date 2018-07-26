@@ -21,7 +21,7 @@ module.exports = function () {
             statusCode: 200,
             msg: '获得用户信息成功!',
             data: {
-                username: 'alex',
+                username: 'andy',
                 userType: '0'
             }
         },

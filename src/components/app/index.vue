@@ -1,19 +1,31 @@
 <template>
   <div id="chief">
     <Header />
-    <router-view />
+    <template v-if="hasAuthorize">
+      <router-view />
+    </template>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { createNamespacedHelpers } from 'vuex'
 import Header from '@/components/header'
+
+const { mapState, mapActions } = createNamespacedHelpers('login')
 
 export default {
     name: 'App',
     data(){
         return {
             loadedUserInfo: false
+        }
+    },
+    computed: {
+        ...mapState({
+            username: state => state.username
+        }),
+        hasAuthorize(){
+            return this.username.trim().length > 0 && this.loadedUserInfo
         }
     },
     components: {
@@ -26,11 +38,7 @@ export default {
             })
     },
     methods: {
-        ...mapActions('login', ['getUserInfo'])
+        ...mapActions(['getUserInfo'])
     }
 }
 </script>
-
-<style scoped>
-
-</style>
