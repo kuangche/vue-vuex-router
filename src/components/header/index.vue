@@ -23,7 +23,7 @@
     </div>
     <div class="pull-right headrright">
       <div>{{ username }}</div>
-      <div @click="logout"><i class="fa fa-power-off" /></div>
+      <div @click="logoutFn"><i class="fa fa-power-off" /></div>
     </div>
   </div>
 </template>
@@ -33,18 +33,14 @@ import { createNamespacedHelpers } from 'vuex'
 import config from 'conf'
 
 const { url } = config
-const { mapState } = createNamespacedHelpers('login')
+const { mapState, mapActions } = createNamespacedHelpers('login')
 
 export default {
     name: 'Header',
     data(){
         return {
-            url,
-            currentPath: this.$route.name
+            url
         }
-    },
-    mounted(){
-        console.log(this.username, this.$route, this.url)
     },
     computed: {
         ...mapState({
@@ -52,8 +48,14 @@ export default {
         })
     },
     methods: {
-        logout(){
-
+        ...mapActions(['logout']),
+        logoutFn(){
+            this.logout()
+                .then((res) => {
+                    if (res.statusCode === 200) {
+                        this.$router.push(url.login.path)
+                    }
+                })
         }
     }
 }
