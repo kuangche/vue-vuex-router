@@ -9,15 +9,15 @@
       <ul class="list-unstyled list-inline">
         <li>
           <router-link
-            :to="url.login">登录</router-link>
+            :to="url.login.path">登录</router-link>
         </li>
         <li>
           <router-link
-            :to="url.app.todos">todos示例</router-link>
+            :to="url.app.todos.path">todos示例</router-link>
         </li>
         <li>
           <router-link
-            :to="url.app.others">其它</router-link>
+            :to="url.app.others.path">其它</router-link>
         </li>
       </ul>
     </div>

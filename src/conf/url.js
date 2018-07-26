@@ -6,11 +6,23 @@
 
 const url = {
     root: '',
-    login: '/login',
+    login: {
+        path: '/login',
+        component: () => import('@/login/components/login')
+    },
     app: {
-        root: '/app',
-        todos: '/app/todos',
-        others: '/app/others'
+        root: {
+            path: '/app',
+            component: () => import('@/components/app')
+        },
+        todos: {
+            path: 'todos',
+            component: () => import('@/todos/components')
+        },
+        others: {
+            path: 'others',
+            component: () => import('@/others/components')
+        }
     }
 }
 

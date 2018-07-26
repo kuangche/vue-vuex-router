@@ -14,23 +14,28 @@ const routes = [
         }
     },
     {
-        path: url.login,
+        path: url.login.path,
         name: 'login',
-        component: () => import('@/login/components/login'),
+        component: url.login.component,
     },
     {
-        path: url.app.root,
+        path: url.app.root.path,
         name: 'app',
-        component: () => import('@/components/app'),
+        component: url.app.root.component,
         children: [
             {
                 path: '',
                 redirect: { name: 'todos' }
             },
             {
-                path: 'todos',
+                path: url.app.todos.path,
                 name: 'todos',
-                component: () => import('@/todos/components')
+                component: url.app.todos.component
+            },
+            {
+                path: url.app.others.path,
+                name: 'others',
+                component: url.app.others.component
             }
         ]
     }
