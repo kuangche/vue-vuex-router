@@ -9,7 +9,6 @@ import * as constant from './constant'
 import routes from './routes'
 import getters from './getters'
 import url from './url'
-import * as mutationTypes from './mutation-types'
 
 const config = {
     errors,
@@ -17,8 +16,7 @@ const config = {
     constant,
     url,
     routes,
-    getters,
-    mutationTypes
+    getters
 }
 
 export default config

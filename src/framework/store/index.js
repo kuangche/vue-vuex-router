@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import defaultAction from 'framework/defaultAction'
+import module from 'framework/module'
 import config from 'conf'
 
 const { getters, modules } = config
@@ -8,7 +8,7 @@ const { getters, modules } = config
 Vue.use(Vuex)
 const store = new Vuex.Store({
     modules: {
-        defaultAction,
+        module,
         ...modules
     },
     getters

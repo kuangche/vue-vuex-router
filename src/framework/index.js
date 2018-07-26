@@ -1,5 +1,12 @@
+/**
+ * 功能：集中封装
+ * 作者：安超
+ * 日期：2018/7/26
+ */
+
 import axios from 'axios'
 import { Loading } from 'element-ui'
+import actionTypes from './actions/actionTypes'
 
 // ajax统一配置
 const instance = axios.create({
@@ -58,17 +65,16 @@ const handleWithParameter = function (url, {
 * always: ajax无论成功与失败都要执行
  */
 const suffix = ['pre', 'success', 'error', 'fail', 'always']
-const actionTypeDefault = 'HASNOTCONFIGACTIONTYPE'
 const createActions = function (actionMap) {
     const eventNames = Object.keys(actionMap)
     const fnsMap = {}
     eventNames.forEach((eventName) => {
         const configOrFn = actionMap[eventName]
         if (typeof configOrFn !== 'function') {
-            const config = { method: 'GET', actionType: actionTypeDefault, ...configOrFn }
+            const config = { method: 'GET', actionType: actionTypes.HASNOTCONFIGACTIONTYPE, ...configOrFn }
             fnsMap[eventName] = ({commit}, payload = {}) => {
                 let loadingInstance = null
-                const handleRoot = {root: config.actionType === 'HASNOTCONFIGACTIONTYPE'}
+                const handleRoot = {root: config.actionType === actionTypes.HASNOTCONFIGACTIONTYPE}
 
                 if (config.hasLoading || config.hasLoading === undefined) {
                     loadingInstance = Loading.service({

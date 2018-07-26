@@ -1,10 +1,15 @@
+/**
+ * 功能：登录模块状态管理
+ * 作者：安超
+ * 日期：2018/7/26
+ */
 import { createActions, handleMutations } from 'framework'
 import * as actionTypes from '../actions/actionTypes'
 
 const login = {
     namespaced: true,
     state: {
-        username: 'abc',
+        username: '',
         userType: actionTypes.USER_TYPE[0]
     },
     mutations: handleMutations({
