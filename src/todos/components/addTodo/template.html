@@ -3,5 +3,7 @@
   <input
     class="newtodo"
     placeholder="What needs to be done?"
+    v-model="text"
+    @keyup.enter="addTodoFn"
   />
 </header>

@@ -26,6 +26,11 @@ const todos = {
             error(state){ state.isLoading = false },
             always(state){ state.isLoading = false }
         },
+        [actionTypes.ADD_TODO]: {
+            success(state, payload){
+                state.list.unshift(payload)
+            }
+        },
         [actionTypes.UPDATE_TODO]: {
             success(state, payload){
                 const { id, completed } = payload
