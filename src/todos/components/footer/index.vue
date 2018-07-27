@@ -17,10 +17,10 @@ const { constant: {
 export default {
     name: 'FooterView',
     computed: {
-        ...mapState(['list', 'filter']),
+        ...mapState(['filter']),
         ...mapGetters(['listByFilter']),
         unCompletedCount(){
-            return this.list.filter(item => !item.completed).length
+            return this.listByFilter.filter(item => !item.completed).length
         },
         allSelected(){
             return SHOW_ALL === this.filter

@@ -12,7 +12,7 @@
   <button
     type="button"
     class="pull-right clear-completed"
-    :class="{hide: list.length - unCompletedCount <= 0}"
+    :class="{hide: listByFilter.length - unCompletedCount <= 0}"
     @click="clearCompletedTodo"
   >Clear completed
   </button>
