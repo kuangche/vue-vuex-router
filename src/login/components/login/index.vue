@@ -1,5 +1,5 @@
 <template src="./template.html"/>
-<style lang="scss" src="./style.scss"></style>
+<style lang="scss" src="./style.scss" scoped></style>
 <script>
 import { mapActions } from 'vuex'
 import config from 'conf'

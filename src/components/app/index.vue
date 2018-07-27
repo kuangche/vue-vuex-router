@@ -1,11 +1,4 @@
-<template>
-  <div id="chief">
-    <Header />
-    <template v-if="hasAuthorize">
-      <router-view />
-    </template>
-  </div>
-</template>
+<template src="./template.html"/>
 
 <script>
 import { createNamespacedHelpers } from 'vuex'

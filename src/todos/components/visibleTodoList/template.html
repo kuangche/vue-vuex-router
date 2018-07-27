@@ -1,0 +1,23 @@
+<section class="main-todos">
+  <input
+    class="toggle-all"
+    type="checkbox"
+    v-model="checkedAll"
+  >
+  <ul class="todo-list list-unstyled">
+    <li
+      class="text-center"
+      v-if="list.length===0"
+      key="-1"
+    >没有数据！</li>
+    <li
+      v-else
+      is="todo-view"
+      v-for="item in listByFilter"
+      :dataItem="item"
+      :key="item.id"
+      @updateTodo="updateTodo"
+      @removeTodo="removeTodo"
+    />
+  </ul>
+</section>

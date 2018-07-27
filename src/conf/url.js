@@ -17,7 +17,7 @@ const url = {
         },
         todos: {
             path: 'todos',
-            component: () => import('@/todos/components')
+            component: () => import('@/todos/components/main')
         },
         others: {
             path: 'others',

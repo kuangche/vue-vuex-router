@@ -1,0 +1,33 @@
+<li
+  v-click-outside="handleClickOutside"
+  @mouseenter="toggleHideDelIcon(false)"
+  @mouseleave="toggleHideDelIcon(true)"
+  @dblclick="toggleHideEditInput(false)"
+>
+  <div
+    class="view"
+    :class="{hide: !hideEditInput}"
+  >
+    <input
+      class="toggle"
+      type="checkbox"
+      v-model="dataBase.completed"
+    />
+    <div
+      class="normal"
+      :class="{completed: dataBase.completed}"
+    >{{ dataBase.text }}</div>
+    <button
+      type="button"
+      class="destroy"
+      :class="{hide: hideDelIcon}"
+      @click="removeTodo"
+    />
+  </div>
+  <input
+    class="edit"
+    :class="{hide: hideEditInput}"
+    v-model="dataBase.text"
+    @keyup.enter="finishNameEdit"
+  />
+</li>

@@ -1,0 +1,27 @@
+<div
+  class="header clearfix"
+>
+  <div
+    class="pull-left"
+    id="logo"/>
+  <div class="pull-left navigation">
+    <ul class="list-unstyled list-inline">
+      <li>
+        <router-link
+          :to="url.login.path">登录</router-link>
+      </li>
+      <li>
+        <router-link
+          :to="url.app.todos.path">todos示例</router-link>
+      </li>
+      <li>
+        <router-link
+          :to="url.app.others.path">其它</router-link>
+      </li>
+    </ul>
+  </div>
+  <div class="pull-right headrright">
+    <div>{{ username }}</div>
+    <div @click="logoutFn"><i class="fa fa-power-off" /></div>
+  </div>
+</div>

@@ -1,8 +1,4 @@
-<template>
-  <div id="container">
-    <router-view class="containerchild"/>
-  </div>
-</template>
+<template src="./template.html"/>
 
 <script>
 export default {

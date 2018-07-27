@@ -95,13 +95,15 @@ const createActions = function (actionMap) {
                 ).then((res) => {
                     loadingInstance.close()
 
-                    const { statusCode, data, message } = res.data
+                    const { statusCode, msg } = res.data
+                    const params = res.config.params === undefined ? res.config.data : res.config.params
+                    
                     let dataRes = {}
                     // 是否需要接口传递的参数
                     if (config.needFormData) {
                         dataRes = {data: res}
                     } else {
-                        dataRes = {data}
+                        dataRes = res.data.data === undefined ? {...res.data, data: typeof params === 'string' ? JSON.parse(params) : params } : res.data
                     }
 
                     // always只有在成功时才返回数据，非200或异常都不返回数据

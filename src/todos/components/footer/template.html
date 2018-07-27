@@ -1,0 +1,19 @@
+<footer
+  class="footer-todos"
+>
+  <div class="pull-left">
+    <strong>{{listByFilter.length}}</strong> items left
+  </div>
+  <ul class="filters list-unstyled list-inline">
+    <li @click="setFilter('SHOW_ALL')"><span :class="{selected: allSelected}">All</span></li>
+    <li @click="setFilter('SHOW_ACTIVE')"><span :class="{selected: activeSelected}">Active</span></li>
+    <li @click="setFilter('SHOW_COMPLETED')"><span :class="{selected: completedSelected}">Completed</span></li>
+  </ul>
+  <button
+    type="button"
+    class="pull-right clear-completed"
+    :class="{hide: list.length - unCompletedCount <= 0}"
+    @click="clearCompletedTodo"
+  >Clear completed
+  </button>
+</footer>
