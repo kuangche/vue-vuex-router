@@ -1,10 +1,10 @@
 <template>
-  <div>others</div>
+  <div>验证</div>
 </template>
 
 <script>
 export default {
-    name: 'Others'
+    name: 'Validate'
 }
 </script>
 

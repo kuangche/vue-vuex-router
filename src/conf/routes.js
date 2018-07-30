@@ -34,7 +34,28 @@ const routes = [
             {
                 path: url.app.others.path,
                 name: 'others',
-                component: url.app.others.component
+                component: url.app.others.component,
+                children: [
+                    {
+                        path: '',
+                        redirect: { name: 'validate' }
+                    },
+                    {
+                        path: url.app.validate.path,
+                        name: 'validate',
+                        component: url.app.validate.component
+                    },
+                    {
+                        path: url.app.element.path,
+                        name: 'element',
+                        component: url.app.element.component
+                    },
+                    {
+                        path: url.app.drag.path,
+                        name: 'drag',
+                        component: url.app.drag.component
+                    },
+                ]
             }
         ]
     }

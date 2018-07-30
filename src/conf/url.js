@@ -16,12 +16,24 @@ const url = {
             component: () => import('@/components/app')
         },
         todos: {
-            path: 'todos',
+            path: '/app/todos',
             component: () => import('@/todos/components/main')
         },
         others: {
-            path: 'others',
-            component: () => import('@/others/components')
+            path: '/app/others',
+            component: () => import('@/others/components/main')
+        },
+        validate: {
+            path: '/app/others/validate',
+            component: () => import('@/others/components/validate')
+        },
+        element: {
+            path: '/app/others/element',
+            component: () => import('@/others/components/element')
+        },
+        drag: {
+            path: '/app/others/drag',
+            component: () => import('@/others/components/drag')
         }
     }
 }
